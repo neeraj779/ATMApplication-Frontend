@@ -6,7 +6,7 @@ document
     const cardNumber = document.getElementById("cardNumber").value;
     const pin = document.getElementById("pin").value;
 
-    fetch("<api>", {
+    fetch("http://127.0.0.1:8000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,10 +18,11 @@ document
           if (response.status === 200) {
             localStorage.setItem("cardNumber", cardNumber);
             localStorage.setItem("pin", pin);
-            window.location.href = "../templates/home.html";
+            window.location.href = "../index.html";
           } else {
+            console.log(data);
             document.getElementById("error").style.display = "block";
-            document.getElementById("error").innerText = data.errorMessage;
+            document.getElementById("error").innerText = data.detail;
           }
         });
       })

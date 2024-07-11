@@ -83,3 +83,8 @@ button:hover {
 .login-box {
     animation: fadeIn 1s ease-in-out;
 }
+
+.alert {
+    display: none;
+    text-align: center;
+}

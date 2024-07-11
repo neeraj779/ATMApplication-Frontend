@@ -1,6 +1,6 @@
 // Function to check JWT token in local storage
 function checkAuth() {
-  const cardNo = localStorage.getItem("cardNo");
+  const cardNo = localStorage.getItem("cardNumber");
   const pin = localStorage.getItem("pin");
   const logoutButton = document.getElementById("logout-button");
 
