@@ -6,5 +6,5 @@ $(document).on("click", "#deposit-button", function (event) {
   if (validateAmount(amount, "deposit") === false) return;
   showInitialSwal("deposit");
 
-  performTransaction(amount, "deposit");
+  performTransaction(amount, "Deposit");
 });

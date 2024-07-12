@@ -42,22 +42,28 @@ function showInitialSwal(type) {
 }
 
 function performTransaction(amount, type) {
-  let cardno = localStorage.getItem("cardNumber");
+  let cardNumber = localStorage.getItem("cardNumber");
   let pin = localStorage.getItem("pin");
 
   let withdrawMsg = `Please collect your cash. Your remaining balance is `;
   let depositMsg = `Your funds have been added. Your current balance is `;
-  let successMsg = type === "withdraw" ? withdrawMsg : depositMsg;
+  let successMsg = type === "Withdraw" ? withdrawMsg : depositMsg;
+
+  const requestBody = {
+    authDetails: {
+      cardNumber: cardNumber,
+      pin: pin,
+    },
+    amount: amount,
+  };
 
   setTimeout(() => {
-    fetch(`http://127.0.0.1:8000/${type}`, {
+    fetch(`http://localhost:5236/api/Transaction/${type}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        cardno: cardno,
-        pin: pin,
       },
-      body: JSON.stringify({ amount: amount }),
+      body: JSON.stringify(requestBody),
     })
       .then((response) => {
         if (!response.ok) {

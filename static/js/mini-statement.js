@@ -20,24 +20,24 @@ function createTable(data) {
   return table;
 }
 
-let cardno = localStorage.getItem("cardNumber");
+let cardNumber = localStorage.getItem("cardNumber");
 let pin = localStorage.getItem("pin");
 
-fetch(`http://127.0.0.1:8000/transactions`, {
-  method: "GET",
+fetch(`http://localhost:5236/api/Transaction/GetAllTransactions`, {
+  method: "POST",
   headers: {
     "Content-Type": "application/json",
-    cardno: cardno,
-    pin: pin,
   },
+  body: JSON.stringify({ cardNumber, pin }),
 })
   .then((response) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    return response.json();
+    return response.text();
   })
   .then((data) => {
+    console.log(data);
     const transactions = JSON.parse(data);
     const tableContainer = document.getElementById("table-container");
     const table = createTable(transactions);

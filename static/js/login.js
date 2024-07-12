@@ -6,7 +6,7 @@ document
     const cardNumber = document.getElementById("cardNumber").value;
     const pin = document.getElementById("pin").value;
 
-    fetch("http://127.0.0.1:8000/login", {
+    fetch("http://localhost:5236/api/Authentication/AuthenticateCard", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,9 +20,8 @@ document
             localStorage.setItem("pin", pin);
             window.location.href = "../index.html";
           } else {
-            console.log(data);
             document.getElementById("error").style.display = "block";
-            document.getElementById("error").innerText = data.detail;
+            document.getElementById("error").innerText = "Invalid card number or pin"
           }
         });
       })
