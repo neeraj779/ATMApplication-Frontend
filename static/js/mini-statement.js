@@ -32,22 +32,24 @@ fetch(`http://localhost:5236/api/Transaction/GetAllTransactions`, {
 })
   .then((response) => {
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      return response.json().then((data) => {
+        let error = new Error(data.message || "Something went wrong");
+        error.status = response.status;
+        throw error;
+      });
     }
     return response.text();
   })
   .then((data) => {
-    console.log(data);
     const transactions = JSON.parse(data);
     const tableContainer = document.getElementById("table-container");
     const table = createTable(transactions);
     tableContainer.appendChild(table);
   })
   .catch((error) => {
-    console.error(error);
     Swal.fire({
-      icon: "error",
-      title: "Oops... we ran into some trouble :(",
-      text: "Failed to initiate the process.",
+      icon: "info",
+      title: "Hmm 🤔... something seems off!",
+      text: error,
     });
   });
