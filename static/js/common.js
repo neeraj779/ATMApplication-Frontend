@@ -47,7 +47,7 @@ function performTransaction(amount, type) {
 
   let withdrawMsg = `Please collect your cash.`;
   let depositMsg = `Your funds have been added.`;
-  let successMsg = type === "Withdraw" ? withdrawMsg : depositMsg;
+  let successMsg = type === "withdraw" ? withdrawMsg : depositMsg;
 
   const requestBody = {
     authDetails: {
