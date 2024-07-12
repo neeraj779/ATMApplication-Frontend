@@ -24,7 +24,7 @@ function validateAmount(amount, type) {
     Swal.fire({
       icon: "info",
       title: "Wait a sec 🤔",
-      text: `Minimum ${type} amount is 100. You can deposit upto ${maxAmount} at once.`,
+      text: `Minimum ${type} amount is 100. You can ${type} upto ${maxAmount} at once.`,
       confirmButtonText: '<i class="fa fa-thumbs-up"></i> Okay!',
       confirmButtonAriaLabel: "Thumbs up, okay!",
     });
