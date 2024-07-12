@@ -45,8 +45,8 @@ function performTransaction(amount, type) {
   let cardNumber = localStorage.getItem("cardNumber");
   let pin = localStorage.getItem("pin");
 
-  let withdrawMsg = `Please collect your cash. Your remaining balance is `;
-  let depositMsg = `Your funds have been added. Your current balance is `;
+  let withdrawMsg = `Please collect your cash.`;
+  let depositMsg = `Your funds have been added.`;
   let successMsg = type === "Withdraw" ? withdrawMsg : depositMsg;
 
   const requestBody = {
@@ -79,7 +79,7 @@ function performTransaction(amount, type) {
         Swal.close();
         Swal.fire({
           title: `Yoo! you have successfully ${type} the amount. 🎉`,
-          text: successMsg + `₹${data.balance}.`,
+          text: successMsg,
           color: "#716add",
           imageUrl: "/assets/gif/moneyOut.webp",
           imageWidth: 400,
